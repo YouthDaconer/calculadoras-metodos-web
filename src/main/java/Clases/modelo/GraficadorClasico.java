@@ -9,13 +9,11 @@ import java.awt.event.*;
 import java.awt.geom.*;
 import org.nfunk.jep.*;
 import org.nfunk.jep.type.*;
-import org.lsmp.djep.djep.DJep;
 
 public class GraficadorClasico extends JPanel {
 
     //VARIABLES PARA EL EVALUADOR DE FUNCIONES
-    private JEP miEvaluador, miEvaluadorDerivadas;
-    private DJep miEvaluador2;
+    private JEP miEvaluador;
 
     Node nodin;
 
@@ -73,10 +71,9 @@ public class GraficadorClasico extends JPanel {
             BasicStroke.CAP_BUTT,
             BasicStroke.JOIN_MITER,
             5.0f, dash1, 0.0f);
-    ImageIcon imageIcon;
 
     public GraficadorClasico(Container Contenedor) {
-        imageIcon = new ImageIcon(getClass().getResource("background.jpg"));  //imagen de fondo
+
 
         //CREANDO BOTONES
 //        BtnAyuda = new JButton("Ayuda");
@@ -115,7 +112,6 @@ public class GraficadorClasico extends JPanel {
 //        panelBotones.add(botonMetodo2);
 //        panelBotones.add(botonMetodo3);
 //        panelBotones.add(botonMetodo4);
-
         panelControles.setLayout(new GridLayout(4, 2));
         panelControles.add(campoFuncion);
         panelControles.add(BtnGraficar);
@@ -141,10 +137,6 @@ public class GraficadorClasico extends JPanel {
         miniPanelInteraciones.add(campoNumeroDeInteraciones);
         panelControles.add(miniPanelInteraciones);
 
-//        JPanel miniPanelNumPuntos = new JPanel();
-//        miniPanelNumPuntos.add(campoDerivada);
-//        panelControles.add(miniPanelNumPuntos);
-
         //BORDES
         Border colorline = BorderFactory.createLineBorder(new Color(220, 220, 220));
         DisplayPanel1.setBorder(colorline);
@@ -165,7 +157,6 @@ public class GraficadorClasico extends JPanel {
 
         DisplayPanel2.setLayout(new BorderLayout(1, 1));
         DisplayPanel2.add("Center", panelControles);
-//        DisplayPanel2.add("West", panelBotones);
 
         Contenedor.setLayout(new BorderLayout());
         Contenedor.add("North", DisplayPanel1);
@@ -179,25 +170,6 @@ public class GraficadorClasico extends JPanel {
         miEvaluador.addFunction("sen", new org.nfunk.jep.function.Sine());//habilitar 'sen'
         miEvaluador.addVariable("x", 0);
         miEvaluador.setImplicitMul(true); //permite 2x en vez de 2*x
-
-        miEvaluadorDerivadas = new JEP();
-        miEvaluadorDerivadas.addStandardFunctions();  //agrega las funciones matematicas comunes
-        miEvaluadorDerivadas.addStandardConstants();
-        miEvaluadorDerivadas.addComplex();
-        miEvaluadorDerivadas.addFunction("sen", new org.nfunk.jep.function.Sine());//habilitar 'sen'
-        miEvaluadorDerivadas.addVariable("x", 0);
-        miEvaluadorDerivadas.setImplicitMul(true); //permite 2x en vez de 2*x
-
-        miEvaluador2 = new DJep();
-        miEvaluador2.addStandardFunctions();  //agrega las funciones matematicas comunes
-        miEvaluador2.addStandardConstants();
-        miEvaluador2.addComplex();
-        miEvaluador2.addFunction("sen", new org.nfunk.jep.function.Sine());//habilitar 'sen'
-        miEvaluador2.addVariable("x", 0);
-        miEvaluador2.setImplicitMul(true); //permite 2x en vez de 2*x
-        miEvaluador2.setAllowUndeclared(true);
-        miEvaluador2.setAllowAssignment(true);
-        miEvaluador2.addStandardDiffRules();
 
         escalaX = 30;
         escalaY = 30;
@@ -213,30 +185,13 @@ public class GraficadorClasico extends JPanel {
         campoIntervaloB.addActionListener(ManejadorDevt);
         campoNoPuntos.addActionListener(ManejadorDevt);
 
-//        botonMetodo1.addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                listModel.clear();
-//                Biseccion animacion1 = new Biseccion();
-//                animacion1.start();
-//                panelGrafico.repaint();
-//            }
-//        });
-//
-//        botonMetodo2.addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                listModel.clear();
-//                Newton animacion2 = new Newton();
-//                animacion2.start();
-//                panelGrafico.repaint();
-//            }
-//        });
-
         fFrame = new AyudaJFrame(this);
     }//
 
 //////// CLASE PARA EL MANEJO DE LOS EVENTOS ///////////////////////////////////
     private class ManejadorDeEvento implements ActionListener {
 
+        @Override
         public void actionPerformed(ActionEvent evt) {
             Object source = evt.getSource();
             //ACTUALIZA LA GRAFICA SI SE OPROME UN BOTON O ENTER EN UN CAMPO DE TEXTO
@@ -265,6 +220,7 @@ public class GraficadorClasico extends JPanel {
             addMouseWheelListener(this);
         }
 
+        @Override
         public void mousePressed(MouseEvent evt) {
             if (dragging) {
                 return;
@@ -276,11 +232,13 @@ public class GraficadorClasico extends JPanel {
             dragging = true;
         }
 
+        @Override
         public void mouseReleased(MouseEvent evt) {
             dragging = false;
             repaint();
         }
 
+        @Override
         public void mouseDragged(MouseEvent evt) {
             if (dragging == false) {
                 return;
@@ -292,6 +250,7 @@ public class GraficadorClasico extends JPanel {
             repaint();
         }
 
+        @Override
         public void mouseWheelMoved(MouseWheelEvent evt) {
             int zoom = evt.getWheelRotation();
             escalaY += -zoom;
@@ -300,27 +259,32 @@ public class GraficadorClasico extends JPanel {
         }
 
         //el resto hace nada 
+        @Override
         public void mouseMoved(MouseEvent evt) {
         }
 
+        @Override
         public void mouseClicked(MouseEvent evt) {
         }
 
+        @Override
         public void mouseEntered(MouseEvent evt) {
         }
 
+        @Override
         public void mouseExited(MouseEvent evt) {
         }
 
+        @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             Graficar(g, x0, y0);
         }
 
         //METODO QUE PINTA TODA LA GR�FICA
-        void Graficar(Graphics ap, int xg, int yg) {
-            ap.drawImage(imageIcon.getImage(), 0, 0, getWidth(), getHeight(), null);
-            //setBackground(new Color(36,85,102)); //COLOR FONDO/////////////////////////////////////////////////
+        private void Graficar(Graphics ap, int xg, int yg) {
+            
+            setBackground(new Color(36,85,102)); //COLOR FONDO/////////////////////////////////////////////////
             int xi = 0, yi = 0, xi1 = 0, yi1 = 0, numPuntos = 1;
             int cxmin, cxmax, cymin, cymax;
             double valxi = 0.0, valxi1 = 0.0, valyi = 0.0, valyi1 = 0.0;
@@ -447,227 +411,18 @@ public class GraficadorClasico extends JPanel {
 
         }//Graficar
 
-        double dist(double xA, double yA, double xB, double yB) {
+        private double dist(double xA, double yA, double xB, double yB) {
             return (xA - xB) * (xA - xB) + (yA - yB) * (yA - yB);
         }//
 
     } // class
 
-////////metodos
-    class Biseccion extends Thread {
-
-        float puntoMedio, a1, b1;
-        double p1, p2, p3;
-        Graphics2D g = (Graphics2D) panelGrafico.getGraphics();  //clave para poder pintar con el run
-        int numeroDeInteraciones;
-        int interaciones;
-        String cadenaLista;
-
-        Point2D.Double puntoA1;
-        Point2D.Double puntoB1;
-        Point2D.Double pointMedio;
-
-        Biseccion() {
-            a1 = intervaloA;
-            b1 = intervaloB;
-            puntoA1 = new Point2D.Double(x0 + a1 * escalaX, y0);
-            puntoB1 = new Point2D.Double(x0 + b1 * escalaX, y0);
-            numeroDeInteraciones = Integer.parseInt(campoNumeroDeInteraciones.getText());
-            interaciones = 0;
-            puntoMedio = (a1 + b1) / 2;
-
-        }
-
-        public void run() {
-            miEvaluador.addVariable("x", a1);
-            p1 = miEvaluador.getValue();
-            miEvaluador.addVariable("x", b1);
-            p2 = miEvaluador.getValue();
-
-            g.setPaint(Color.red);
-            g.drawLine((int) Math.round(puntoA1.getX()), y0 + 10, (int) Math.round(puntoA1.getX()), y0 - 10);
-            g.drawLine((int) Math.round(puntoB1.getX()), y0 + 10, (int) Math.round(puntoB1.getX()), y0 - 10);
-            try {
-                sleep((int) (Math.random() * 2000));
-            } catch (InterruptedException e) {
-                System.out.println("error" + e.toString());
-            }
-
-            if (p1 * p2 <= 0) {
-                cadenaLista = new String(" n \t\t\t " + " int A \t\t\t" + " int B \t\t\t" + " punto medio \t\t\t" + " f(punto medio)");
-                listModel.addElement(cadenaLista);
-
-                g.setPaint(Color.red);
-                g.drawLine((int) Math.round(puntoA1.getX()), y0 + 10, (int) Math.round(puntoA1.getX()), y0 - 10);
-                g.drawLine((int) Math.round(puntoB1.getX()), y0 + 10, (int) Math.round(puntoB1.getX()), y0 - 10);
-
-                g.setPaint(Color.blue);
-                pointMedio = new Point2D.Double(x0 + puntoMedio * escalaX, y0);
-                g.drawLine((int) Math.round(pointMedio.getX()), y0 + 10, (int) Math.round(pointMedio.getX()), y0 - 10);
-                try {
-                    sleep((int) (Math.random() * 2000));
-                } catch (InterruptedException e) {
-                    System.out.println("error" + e.toString());
-                }
-
-                miEvaluador.addVariable("x", puntoMedio);
-                p3 = miEvaluador.getValue();
-
-                while (p3 != 0 && interaciones < numeroDeInteraciones) {
-                    cadenaLista = new String();
-                    listModel.addElement(cadenaLista);
-                    miEvaluador.addVariable("x", a1);
-                    p1 = miEvaluador.getValue();
-                    miEvaluador.addVariable("x", b1);
-                    p2 = miEvaluador.getValue();
-                    miEvaluador.addVariable("x", puntoMedio);
-                    p3 = miEvaluador.getValue();
-
-                    if (p1 * p3 < 0) {
-                        cadenaLista = new String("" + interaciones + " \t\t\t " + a1 + " \t\t\t " + b1 + " \t\t\t" + puntoMedio);
-                        listModel.addElement(cadenaLista);
-
-                        g.setPaint(Color.yellow);
-                        g.drawLine((int) Math.round(puntoB1.getX()), y0 + 10, (int) Math.round(puntoB1.getX()), y0 - 10);
-                        b1 = puntoMedio;
-                        puntoA1 = new Point2D.Double(x0 + a1 * escalaX, y0);
-                        puntoB1 = new Point2D.Double(x0 + b1 * escalaX, y0);
-
-                        g.setPaint(Color.red);
-                        g.drawLine((int) Math.round(puntoA1.getX()), y0 + 10, (int) Math.round(puntoA1.getX()), y0 - 10);
-                        g.drawLine((int) Math.round(puntoB1.getX()), y0 + 10, (int) Math.round(puntoB1.getX()), y0 - 10);
-                        puntoMedio = (a1 + b1) / 2;
-
-                        try {
-                            sleep((int) (Math.random() * 2000));
-                        } catch (InterruptedException e) {
-                            System.out.println("error" + e.toString());
-                        }
-
-                        g.setPaint(Color.blue);
-                        pointMedio = new Point2D.Double(x0 + puntoMedio * escalaX, y0);
-                        g.drawLine((int) Math.round(pointMedio.getX()), y0 + 10, (int) Math.round(pointMedio.getX()), y0 - 10);
-
-                        try {
-                            sleep((int) (Math.random() * 2000));
-                        } catch (InterruptedException e) {
-                            System.out.println("error" + e.toString());
-                        }
-
-                    } else if (p3 * p2 < 0) {
-                        cadenaLista = new String("" + interaciones + " \t\t\t " + a1 + " \t\t\t " + b1 + " \t\t\t" + puntoMedio);
-                        listModel.addElement(cadenaLista);
-
-                        g.setPaint(Color.yellow);
-                        g.drawLine((int) Math.round(puntoA1.getX()), y0 + 10, (int) Math.round(puntoA1.getX()), y0 - 10);
-
-                        a1 = puntoMedio;
-                        puntoA1 = new Point2D.Double(x0 + a1 * escalaX, y0);
-                        puntoB1 = new Point2D.Double(x0 + b1 * escalaX, y0);
-
-                        g.setPaint(Color.red);
-                        g.drawLine((int) Math.round(puntoA1.getX()), y0 + 10, (int) Math.round(puntoA1.getX()), y0 - 10);
-                        g.drawLine((int) Math.round(puntoB1.getX()), y0 + 10, (int) Math.round(puntoB1.getX()), y0 - 10);
-                        puntoMedio = (a1 + b1) / 2;
-
-                        try {
-                            sleep((int) (Math.random() * 2000));
-                        } catch (InterruptedException e) {
-                            System.out.println("error" + e.toString());
-                        }
-
-                        g.setPaint(Color.blue);
-                        pointMedio = new Point2D.Double(x0 + puntoMedio * escalaX, y0);
-                        g.drawLine((int) Math.round(pointMedio.getX()), y0 + 10, (int) Math.round(pointMedio.getX()), y0 - 10);
-
-                        try {
-                            sleep((int) (Math.random() * 2000));
-                        } catch (InterruptedException e) {
-                            System.out.println("error" + e.toString());
-                        }
-                    }
-                    interaciones++;
-                }//while
-            }//if
-            else {
-                Mensaje.setText("esa funci�n no sirve para este metodo");
-                //Mensaje.setForeground(Color.red);
-                campoFuncion.setForeground(Color.red);
-            }
-            repaint();
-        }//run
-
-    }//clase Bisecci�n
-
-    class Newton extends Thread {
-
-        double x1, xi;
-        double fx1, fxi;
-        int numeroDeInteraciones;
-        int interaciones = 0;
-        Graphics2D g = (Graphics2D) panelGrafico.getGraphics();  //clave para poder pintar con el run
-        Point2D.Double puntoA1;
-
-        public Newton() {
-            xi = 1;
-            numeroDeInteraciones = Integer.parseInt(campoNumeroDeInteraciones.getText());
-            puntoA1 = new Point2D.Double(x0 + xi * escalaX, y0);
-        }
-
-        public void run() {
-            //  while(true){//interaciones < numeroDeInteraciones){
-            g.setPaint(Color.red);
-
-            //g.drawLine((int)Math.round(puntoA1.getX()),y0+10,(int)Math.round(puntoA1.getX()),y0 -10 );
-            g.drawLine(x0, 20, x0, -20);
-            if (true) {
-                g.drawLine(x0, 20, x0, -20);
-            }
-            g.drawLine(x0, 20, x0, -20);
-            g.drawLine(x0, 20, x0, -20);
-            //      miEvaluador.addVariable("x", xi);
-            //      try{sleep((int)(Math.random()*20000));}
-            //      catch(InterruptedException e){System.out.println("error"+e.toString());}
-            System.out.println("llega   ," + puntoA1.getX());
-            /* fx1=miEvaluador.getValue();
-            miEvaluadorDerivadas.addVariable("x", xi);
-            fxi=miEvaluadorDerivadas.getValue();
-        
-        System.out.println(" xi "+xi+" f1 "+fx1+" f2 "+fxi);
-            try{sleep((int)(Math.random()*10000));}
-            catch(InterruptedException e){System.out.println("error"+e.toString());}
-            xi = xi - (fx1/fxi);
-            System.out.println(" xi "+xi);
-            
-            interaciones++;
-            try{sleep((int)(Math.random()*10000));}
-            catch(InterruptedException e){System.out.println("error"+e.toString());}
-            
-            
-            try{
-            Node node = miEvaluador2.parse(campoFuncion.getText());//coloca el nodo con una funcion preestablecida
-            Node diff = miEvaluador2.differentiate(node,"x");//deriva la funcion con respecto a x
-            Node simp = miEvaluador2.simplify(diff);//Simplificamos la funcion con respecto a x
-            derivada = miEvaluador2.toString(simp);//Convertimos el valor simplificado en un String
-            campoDerivada.setText(derivada);
-            panelGrafico.repaint();
-            } catch(ParseException e){ e.printStackTrace();}
-            
-            miEvaluadorDerivadas.parseExpression(derivada);
-             */
-            // }
-
-            repaint();
-        }
-
-    }
-
-    class AyudaJFrame extends JFrame {
+    private class AyudaJFrame extends JFrame {
 
         JTextArea p;
         GraficadorClasico fApplet;
 
-        AyudaJFrame(GraficadorClasico applet) {
+        public AyudaJFrame(GraficadorClasico applet) {
             super("textos");
             fApplet = applet;
             Container content_pane = getContentPane();
@@ -681,10 +436,6 @@ public class GraficadorClasico extends JPanel {
 
             pack();
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            //nada por hoy
         }
 
         String information() {
@@ -731,8 +482,6 @@ public class GraficadorClasico extends JPanel {
                     + " :. Escuela de Matem�tica\n";
             return message;
         }//information
-
     } // class AyudaFrame
-
 } // end APPLET
 

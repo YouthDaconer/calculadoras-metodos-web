@@ -30,39 +30,44 @@
                     <div class="cbp-hsinner">
                         <ul class="cbp-hsmenu">
                             <li><a href="#">Calculadora</a></li>
-                            <li><a href="#">Graficadora</a></li>
+                            <li><a href="ventanas/graficadora.jsp">Graficadora</a></li>
                             <li>
                                 <a href="#">Bases</a>
                                 <ul class="cbp-hssubmenu">
-                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Fresh Juice</span></a></li>
-                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Sweet Rum</span></a></li>
-                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Eggy Liquor</span></a></li>
+                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Conversor de bases numéricas</span></a></li>
+                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Estandar IEEE754</span></a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Ecuaciones</a>
+                                <a href="#">Métodos de raíces</a>
                                 <ul class="cbp-hssubmenu">
-                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Fresh Juice</span></a></li>
-                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Sweet Rum</span></a></li>
-                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Eggy Liquor</span></a></li>
+                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Newthon Rapshon</span></a></li>
+                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Bisección</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Regla falsa</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Derivadas</a></li>
+                            <li><a href="#">Derivadas numéricas</a></li>
                             <li>
                                 <a href="#">Integrales</a>
                                 <ul class="cbp-hssubmenu">
-                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Fresh Juice</span></a></li>
-                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Sweet Rum</span></a></li>
-                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Eggy Liquor</span></a></li>
+                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Suma de rectángulos</span></a></li>
+                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Suma de trapecios</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Simpson 1/3</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Simpson 3/8</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Montecarlo</span></a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Sistema/Ec. Lineal</a></li>
                             <li>
                                 <a href="#">Matrices</a>
                                 <ul class="cbp-hssubmenu">
-                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Fresh Juice</span></a></li>
-                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Sweet Rum</span></a></li>
-                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Eggy Liquor</span></a></li>
+                                    <li><a href="#"><img src="images/10.png" alt="img10"/><span>Suma</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Resta</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Producto punto</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Producto escalar</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Transpuesta</span></a></li>
+                                    <li><a href="#"><img src="images/6.png" alt="img06"/><span>Inversa</span></a></li>
+                                    <li><a href="#"><img src="images/9.png" alt="img09"/><span>Gauss Jordan</span></a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Ajuste Polinómico</a></li>
