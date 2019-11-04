@@ -106,12 +106,7 @@ public class GraficadorClasico extends JPanel {
         DisplayPanel1.setLayout(new BorderLayout());
         DisplayPanel1.add(scrollPane, BorderLayout.CENTER);//panelGrafico
 
-//        panelBotones = new JPanel();
-//        panelBotones.setLayout(new GridLayout(4, 1));
-//        panelBotones.add(botonMetodo1);
-//        panelBotones.add(botonMetodo2);
-//        panelBotones.add(botonMetodo3);
-//        panelBotones.add(botonMetodo4);
+
         panelControles.setLayout(new GridLayout(4, 2));
         panelControles.add(campoFuncion);
         panelControles.add(BtnGraficar);
