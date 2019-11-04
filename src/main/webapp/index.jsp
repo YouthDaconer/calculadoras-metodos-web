@@ -30,7 +30,7 @@
                     <div class="cbp-hsinner">
                         <ul class="cbp-hsmenu">
                             <li><a href="#">Calculadora</a></li>
-                            <li><a href="ventanas/graficadora.jsp">Graficadora</a></li>
+                            <li><a href="ventanas/graficadora.jsp" target="_blank">Graficadora</a></li>
                             <li>
                                 <a href="#">Bases</a>
                                 <ul class="cbp-hssubmenu">

@@ -15,20 +15,23 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div>           
+        <h1>Cargando graficadora...</h1>
+        <div> 
             <%
-                JFrame frame = new JFrame();
-                frame.setSize(900, 690);//500,350
-                frame.setTitle("interfaz grafica");                
-                frame.setResizable(false);
-                Container Contenedor = frame.getContentPane();
-                GraficadorClasico mipanel = new GraficadorClasico(Contenedor);
-                frame.add(mipanel);
-                frame.setVisible(true);
-                frame.setLocationRelativeTo(null);
-                frame.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-            %>
+            JFrame f = new JFrame();
+            f.setSize(900, 690);//500,350
+            f.setTitle("interfaz grafica");            
+            f.setResizable(false);
+            Container Contenedor = f.getContentPane();
+            GraficadorClasico mipanel = new GraficadorClasico(Contenedor);
+            f.add(mipanel);
+            f.setVisible(true);            
+            
+            %>                     
         </div>
-        <h1>Hello World!</h1>
+        <script>        
+                window.close();                    
+        </script>
+        
     </body>
 </html>
