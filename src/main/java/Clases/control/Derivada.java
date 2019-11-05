@@ -45,7 +45,7 @@ public class Derivada {
         Double resultado = Double.NaN;// no un valor numerico
         try {
             resultado = ((f.f(x + h) - f.f(x)) / h);//formula de derivación numérica
-            resultado = f.redondeo(Double.toString(resultado), cifras);//redondeo a 5 cifras
+            resultado = Funcion.redondeo(Double.toString(resultado), cifras);//redondeo a 5 cifras
         } catch (ArithmeticException e) {
             throw new ArithmeticException("No se pudo evaluar la derivada en el punto " + x);// en caso de que no se pueda hallar la derivada
         }
