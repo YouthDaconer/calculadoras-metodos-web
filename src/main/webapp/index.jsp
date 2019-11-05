@@ -24,77 +24,77 @@
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Math Raphsody</a>
+      <a class="navbar-brand" href="index.jsp">Math Raphsody</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <!--li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="about.jsp">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
+            <a class="nav-link" href="services.jsp">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="contact.jsp">Contact</a>
           </li-->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBases" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Bases
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBases">
-              <a class="dropdown-item" href="portfolio-1-col.html">Conversor de Bases Numéricas</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">Estandar IEEE754</a>
+              <a class="dropdown-item" href="portfolio-1-col.jsp">Conversor de Bases Numéricas</a>
+              <a class="dropdown-item" href="portfolio-2-col.jsp">Estandar IEEE754</a>
             </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRaices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Métodos de raíces
+              Métodos de raí­ces
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownRaices">
-              <a class="dropdown-item" href="blog-home-1.html">Newthon Rapshon</a>
-              <a class="dropdown-item" href="blog-home-2.html">Regla Falsa</a>
-              <a class="dropdown-item" href="blog-post.html">Bisección</a>
+              <a class="dropdown-item" href="blog-home-1.jsp">Newthon Rapshon</a>
+              <a class="dropdown-item" href="blog-home-2.jsp">Regla Falsa</a>
+              <a class="dropdown-item" href="blog-post.jsp">Bisección</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">Derivadas</a>
+            <a class="nav-link" href="about.jsp">Derivadas</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRaices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Integrales
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownRaices">
-              <a class="dropdown-item" href="full-width.html">Suma de rectángulos</a>
-              <a class="dropdown-item" href="sidebar.html">Suma de trapecios</a>
-              <a class="dropdown-item" href="faq.html">Simpson 1/3</a>
-              <a class="dropdown-item" href="404.html">Simpson 3/8</a>
-              <a class="dropdown-item" href="pricing.html">Montecarlo</a>
+              <a class="dropdown-item" href="full-width.jsp">Suma de rectángulos</a>
+              <a class="dropdown-item" href="sidebar.jsp">Suma de trapecios</a>
+              <a class="dropdown-item" href="faq.jsp">Simpson 1/3</a>
+              <a class="dropdown-item" href="404.jsp">Simpson 3/8</a>
+              <a class="dropdown-item" href="pricing.jsp">Montecarlo</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">Sistema/Ec. Lineal</a>
+            <a class="nav-link" href="about.jsp">Sistema/Ec. Lineal</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMatrices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Matrices
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMatrices">
-              <a class="dropdown-item" href="full-width.html">Suma</a>
-              <a class="dropdown-item" href="sidebar.html">Resta</a>
-              <a class="dropdown-item" href="faq.html">Producto punto</a>
-              <a class="dropdown-item" href="404.html">Producto escalar</a>
-              <a class="dropdown-item" href="pricing.html">Transpuesta</a>
-              <a class="dropdown-item" href="pricing.html">Inversa</a>
-              <a class="dropdown-item" href="pricing.html">Gauss Jordan</a>
+              <a class="dropdown-item" href="full-width.jsp">Suma</a>
+              <a class="dropdown-item" href="sidebar.jsp">Resta</a>
+              <a class="dropdown-item" href="faq.jsp">Producto punto</a>
+              <a class="dropdown-item" href="404.jsp">Producto escalar</a>
+              <a class="dropdown-item" href="pricing.jsp">Transpuesta</a>
+              <a class="dropdown-item" href="pricing.jsp">Inversa</a>
+              <a class="dropdown-item" href="pricing.jsp">Gauss Jordan</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">Ajuste Polinómico</a>
+            <a class="nav-link" href="about.jsp">Ajuste Polinómico</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">Acerca de</a>
+            <a class="nav-link" href="about.jsp">Acerca de</a>
           </li>
         </ul>
       </div>
