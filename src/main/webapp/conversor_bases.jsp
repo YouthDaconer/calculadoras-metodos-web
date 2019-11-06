@@ -38,7 +38,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBases">
                                 <a class="dropdown-item" href="conversor_bases.jsp">Conversor de Bases Numéricas</a>
-                                <a class="dropdown-item" href="portfolio-2-col.jsp">Estandar IEEE754</a>
+                                <a class="dropdown-item" href="conversor_ieee754.jsp">Estandar IEEE754</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
