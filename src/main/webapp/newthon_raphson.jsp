@@ -128,21 +128,20 @@
         <div class="container">
 
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3">Derivadas
+            <h1 class="mt-4 mb-3">Newthon Raphson
             </h1>
 
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.jsp">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Derivadas</li>
+                <li class="breadcrumb-item">Raíces</li>
+                <li class="breadcrumb-item active">Newthon Raphson</li>
             </ol>
             <br/>
-
-            <!-- Intro Content -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <form>
+            <form>
+                <div class="row">
+                    <div class="col-lg-6">
                         <div class="form-group row">
                             <label for="expresionMath" class="col-sm-2 col-form-label">Expresión</label>
                             <div class="col-sm-10">
@@ -155,31 +154,89 @@
                                 <input type="number" class="form-control" id="valorX" placeholder="Escriba el valor de x">
                             </div>
                         </div>
-                        <hr/>
                         <div class="form-group row">
-                            <label for="resultado" class="col-sm-2 col-form-label">Primera Derivada F'(x)</label>
+                            <label for="errorTol" class="col-sm-2 col-form-label">Error Tolerancia</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="primera_derivada" readonly>
+                                <input type="number" class="form-control" id="errorTol" placeholder="Escriba el error de tolerancia">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group row">
+                            <label for="resultado" class="col-sm-2 col-form-label">Resultado</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="resultado" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="resultado" class="col-sm-2 col-form-label">Segunda Derivada F"(x)</label>
+                            <label for="errorRel" class="col-sm-2 col-form-label">Error Relativo</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="segunda_derivada" readonly>
+                                <input type="text" class="form-control" id="errorRel" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="numIteraciones" class="col-sm-2 col-form-label">Iteraciones</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="numIteraciones" readonly>
                             </div>
                         </div>
                         </br>
                         <div class="form-group row">
-                            <div class="col-sm-10">
-                                <button id="calcular" type="button" class="btn btn-primary">Calcular</button>
+                            <div class="col-sm-12">
+                                <div class="float-right">
+                                    <button id="calcular" type="button" class="btn btn-primary">Calcular</button>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="img-fluid rounded mb-4" id="applet_container"></div>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Iteración</th>
+                                    <th scope="col">Xn</th>
+                                    <th scope="col">Derivada Xn</th>
+                                    <th scope="col">Xn+1</th>
+                                    <th scope="col">Error relativo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+                <hr/>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="img-fluid rounded mb-4" id="applet_container"></div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <br/>
@@ -200,14 +257,17 @@
             $(document).ready(function () {
                 $('#calcular').click(function (event) {
                     var expresion = $('#expresionMath').val();
+                    var errorTol = $('#errorTol').val();
                     var valor = $('#valorX').val();
-                    $.post('DerivadasServlet', {
+                    $.post('NewthonRaphsonServlet', {
                         expresionMath: expresion,
+                        errorTol: errorTol,
                         valorX: valor
                     }, function (jsonData) {
                         var resultados = jQuery.parseJSON(jsonData);
-                        $('#primera_derivada').val(resultados.primera);
-                        $('#segunda_derivada').val(resultados.segunda);
+                        $('#resultado').val(resultados.resultado);
+                        $('#errorRel').val(resultados.error);
+                        $('#numIteraciones').val(resultados.iteraciones);
                     });
                 });
             });

@@ -110,7 +110,7 @@ public class ConversorIEEE754Servlet extends HttpServlet {
                     while (exp64.length() != 11) {
                         exp64 = "0" + exp64;
                     }
-                    json.put("signo_64_bits", f.getSigno());
+                    json.put("signo_64_bits", signo_32_bits);
                     json.put("exponente_64_bits", exp64);
                     json.put("mantisa_64_bits", f.getMantisa64());
                     json.put("decimal", sDec);
@@ -138,7 +138,7 @@ public class ConversorIEEE754Servlet extends HttpServlet {
                     while (exp32.length() != 8) {
                         exp32 = "0" + exp32;
                     }
-                    json.put("signo_32_bits", f.getSigno());
+                    json.put("signo_32_bits", signo_64_bits);
                     json.put("exponente_32_bits", exp32);
                     json.put("mantisa_32_bits", f.getMantisa32());
                     json.put("decimal", sDec);
