@@ -47,7 +47,6 @@ public class ConversorIEEE754Servlet extends HttpServlet {
         switch (base) {
             case "1":
                 if (!numDecimal.equals("") && !numDecimal.equals(".")) {
-                    Decimal baseDecimal = new Decimal();
                     String bin = d.cambiarABase(numDecimal, 2, 100);
                     f = new IEEE754(bin);
                     String exp32 = f.exponente32();
@@ -72,7 +71,6 @@ public class ConversorIEEE754Servlet extends HttpServlet {
                 break;
             case "2":
                 if (!numBinario.equals("") && !numBinario.equals(".")) {
-                    Decimal baseDecimal = new Decimal();
                     f = new IEEE754(numBinario);
                     String exp32 = f.exponente32();
                     String exp64 = f.exponente64();
@@ -106,6 +104,15 @@ public class ConversorIEEE754Servlet extends HttpServlet {
                     }
                     sBin.append(f.getBinario(exponente_32_bits, mantisa_32_bits));
                     sDec.append(f.getNumeroDecimal(exponente_32_bits, mantisa_32_bits));
+                    // Se setea la conversión a 64 bits
+                    f = new IEEE754(f.getBinario(exponente_32_bits, mantisa_32_bits));
+                    String exp64 = f.exponente64();
+                    while (exp64.length() != 11) {
+                        exp64 = "0" + exp64;
+                    }
+                    json.put("signo_64_bits", f.getSigno());
+                    json.put("exponente_64_bits", exp64);
+                    json.put("mantisa_64_bits", f.getMantisa64());
                     json.put("decimal", sDec);
                     json.put("binario", sBin);
                     out.println(json);
@@ -125,6 +132,15 @@ public class ConversorIEEE754Servlet extends HttpServlet {
                     }
                     sBin.append(f.getBinario(exponente_64_bits, mantisa_64_bits));
                     sDec.append(f.getNumeroDecimal(exponente_64_bits, mantisa_64_bits));
+                    // Se setea la conversión a 32 bits
+                    f = new IEEE754(f.getBinario(exponente_64_bits, mantisa_64_bits));
+                    String exp32 = f.exponente32();
+                    while (exp32.length() != 8) {
+                        exp32 = "0" + exp32;
+                    }
+                    json.put("signo_32_bits", f.getSigno());
+                    json.put("exponente_32_bits", exp32);
+                    json.put("mantisa_32_bits", f.getMantisa32());
                     json.put("decimal", sDec);
                     json.put("binario", sBin);
                     out.println(json);

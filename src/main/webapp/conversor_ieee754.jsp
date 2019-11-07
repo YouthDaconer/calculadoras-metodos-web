@@ -388,6 +388,7 @@
                                     numDecimal: numero,
                                     base: "1"
                                 }, function (jsonData) {
+                                    console.log(jsonData);
                                     if ($('#numDecimal').val() !== "") {
                                         var resultados = jQuery.parseJSON(jsonData);
                                         $('#numBinario').val(resultados.binario);
@@ -416,6 +417,7 @@
                                     numBinario: numero,
                                     base: "2"
                                 }, function (jsonData) {
+                                    console.log(jsonData);
                                     if ($('#numBinario').val() !== "") {
                                         var resultados = jQuery.parseJSON(jsonData);
                                         $('#numDecimal').val(resultados.decimal);
@@ -449,20 +451,24 @@
                                     mantisa_32_bits: mantisa_32_bits,
                                     base: "3"
                                 }, function (jsonData) {
+                                    console.log(jsonData);
                                     if ($('#signo_32_bits').val() !== "" && $('#exponente_32_bits').val() !== "" && $('#mantisa_32_bits').val() !== "") {
                                         var resultados = jQuery.parseJSON(jsonData);
                                         $('#numDecimal').val(resultados.decimal);
                                         $('#numBinario').val(resultados.binario);
+                                        $('#signo_64_bits').val(resultados.signo_64_bits);
+                                        $('#exponente_64_bits').val(resultados.exponente_64_bits);
+                                        $('#mantisa_64_bits').val(resultados.mantisa_64_bits);
                                     } else {
                                         $('#numDecimal').val("");
                                         $('#numBinario').val("");
                                         $('#signo_32_bits').val("");
                                         $('#exponente_32_bits').val("");
                                         $('#mantisa_32_bits').val("");
+                                        $('#signo_64_bits').val("");
+                                        $('#exponente_64_bits').val("");
+                                        $('#mantisa_64_bits').val("");
                                     }
-                                    $('#signo_64_bits').val("");
-                                    $('#exponente_64_bits').val("");
-                                    $('#mantisa_64_bits').val("");
                                 });
                                 break;
                             case "4":
@@ -478,20 +484,24 @@
                                     mantisa_64_bits: mantisa_64_bits,
                                     base: "4"
                                 }, function (jsonData) {
+                                    console.log(jsonData);
                                     if ($('#signo_64_bits').val() !== "" && $('#exponente_64_bits').val() !== "" && $('#mantisa_64_bits').val() !== "") {
                                         var resultados = jQuery.parseJSON(jsonData);
                                         $('#numDecimal').val(resultados.decimal);
                                         $('#numBinario').val(resultados.binario);
+                                        $('#signo_32_bits').val(resultados.signo_32_bits);
+                                        $('#exponente_32_bits').val(resultados.exponente_32_bits);
+                                        $('#mantisa_32_bits').val(resultados.mantisa_32_bits);
                                     } else {
                                         $('#numDecimal').val("");
                                         $('#numBinario').val("");
                                         $('#signo_64_bits').val("");
                                         $('#exponente_64_bits').val("");
                                         $('#mantisa_64_bits').val("");
+                                        $('#signo_32_bits').val("");
+                                        $('#exponente_32_bits').val("");
+                                        $('#mantisa_32_bits').val("");
                                     }
-                                    $('#signo_32_bits').val("");
-                                    $('#exponente_32_bits').val("");
-                                    $('#mantisa_32_bits').val("");
                                 });
                                 break;
                             default:
