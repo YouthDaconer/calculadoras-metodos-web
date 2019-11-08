@@ -17,39 +17,9 @@
         <!-- Custom styles for this template -->
         <link href="css/modern-business.css" rel="stylesheet">
         <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
-        <script type="text/javascript">
-            function perspective(p) {
-                updateHelp(p);
-                ggbApplet.setPerspective(p);
-            }
-            var parameters = {
-                "id": "ggbApplet",
-                "appName": "graphing",
-                "height": 400,
-                "showToolBar": true,
-                "borderColor": null,
-                "showMenuBar": true,
-                "allowStyleBar": true,
-                "showAlgebraInput": true,
-                "enableLabelDrags": false,
-                "enableShiftDragZoom": true,
-                "capturingThreshold": null,
-                "showToolBarHelp": false,
-                "errorDialogsActive": true,
-                "showTutorialLink": true,
-                "showLogging": true,
-                "useBrowserForJS": false};
-            var applet = new GGBApplet(parameters, '5.0', 'applet_container');
-            //  when used with Math Apps Bundle, uncomment this:
-            //  applet.setHTML5Codebase('GeoGebra/HTML5/5.0/web3d/');
-            window.onload = function () {
-                applet.inject('applet_container');
-            }
-        </script>
     </head>
 
     <body>
-
         <!-- Navigation -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
@@ -235,25 +205,62 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
-            $(document).ready(function () {
-                $('#calcular').click(function (event) {
-                    var expresion = $('#expresionMath').val();
-                    var inferior = $('#inferior').val();
-                    var superior = $('#superior').val();
-                    var particiones = $('#particiones').val();
-                    $.post('IntegracionRectangulosServlet', {
-                        expresion: expresion,
-                        inferior: inferior,
-                        superior: superior,
-                        particiones: particiones
-                    }, function (jsonData) {
-                        var resultados = jQuery.parseJSON(jsonData);
-                        $('#izquierdo').val(resultados.izquierdo);
-                        $('#medio').val(resultados.medio);
-                        $('#derecho').val(resultados.derecho);
-                    });
+        var funcion = "";
+
+        function setFunction(objName) {
+            var applet = document.ggbApplet;
+            if (funcion !== "") {
+                document.ggbApplet.reset();
+            }
+            funcion = "Integral(" + $('#expresionMath').val() + ", " + $('#inferior').val() + ", " + $('#superior').val() + ")";
+            applet.evalCommand(funcion);
+        }
+
+        function perspective(p) {
+            updateHelp(p);
+            ggbApplet.setPerspective(p);
+        }
+
+        var parameters = {
+            "id": "ggbApplet",
+            "appName": "graphing",
+            "height": 400,
+            "showToolBar": true,
+            "borderColor": null,
+            "showMenuBar": true,
+            "allowStyleBar": true,
+            "showAlgebraInput": true,
+            "enableLabelDrags": false,
+            "enableShiftDragZoom": true,
+            "capturingThreshold": null,
+            "showToolBarHelp": false,
+            "errorDialogsActive": true,
+            "showTutorialLink": true,
+            "showLogging": true,
+            "useBrowserForJS": false};
+        var applet = new GGBApplet(parameters, '5.0', 'applet_container');
+
+        $(document).ready(function () {
+            applet.inject('applet_container');
+            $('#calcular').click(function (event) {
+                var expresion = $('#expresionMath').val();
+                var inferior = $('#inferior').val();
+                var superior = $('#superior').val();
+                var particiones = $('#particiones').val();
+                $.post('IntegracionRectangulosServlet', {
+                    expresion: expresion,
+                    inferior: inferior,
+                    superior: superior,
+                    particiones: particiones
+                }, function (jsonData) {
+                    var resultados = jQuery.parseJSON(jsonData);
+                    setFunction('T');
+                    $('#izquierdo').val(resultados.izquierdo);
+                    $('#medio').val(resultados.medio);
+                    $('#derecho').val(resultados.derecho);
                 });
             });
+        });
     </script>
 </body>
 
