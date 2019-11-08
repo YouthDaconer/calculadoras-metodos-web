@@ -5,8 +5,7 @@
  */
 package Clases.servlets;
 
-import Clases.control.NewtonRaphson;
-import com.google.gson.Gson;
+import Clases.control.Integral;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import org.json.JSONObject;
 
-@WebServlet("/NewthonRaphsonServlet")
-public class NewthonRaphsonServlet extends HttpServlet {
+@WebServlet("/IntegracionMonteCarloServlet")
+public class IntegracionMonteCarloServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,27 +30,30 @@ public class NewthonRaphsonServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         JSONObject json = new JSONObject();
         String resultado = "NaN";
-        NewtonRaphson nr;
+        Integral integracion;
         try {
-            String expresion = request.getParameter("expresionMath");
-            Double error = Double.parseDouble(request.getParameter("errorTol"));
-            Double valor_x = Double.parseDouble(request.getParameter("valorX"));
-            nr = new NewtonRaphson(expresion, error);
-            resultado = "" + nr.resolver(valor_x);
-            if (resultado.equals("NaN")) {
-                json.put("resultado", "No se pudo calcular la expresión");
+            String expresion = request.getParameter("expresion");
+            Double x1 = Double.parseDouble(request.getParameter("inferior"));
+            Double x2 = Double.parseDouble(request.getParameter("superior"));
+            Integer num_puntos = Integer.parseInt(request.getParameter("puntos"));
+
+            if (x1 >= x2 || num_puntos <= 0) {// En caso de algun en el intervalo 0 con el error tolerado
+                json.put("resultado", "Asegúrate de que el intervalo esté bien ingresado y que los puntos sean > 0");
             } else {
-                json.put("resultado", resultado);
-                json.put("error", nr.getError());
-                json.put("iteraciones", nr.getIteraciones());
-                String tabla_iteraciones = new Gson().toJson(nr.getDatos());
-                json.put("tabla_iteraciones", tabla_iteraciones);
+                integracion = new Integral(expresion, x1, x2, num_puntos);
+                resultado = "" + integracion.monteCarlo(num_puntos);//calculamos
+                if (resultado.equals("NaN")) {
+                    json.put("resultado", "No se pudo calcular la expresión");
+                } else { //ponemos los resultados
+                    json.put("resultado", resultado);
+                }
             }
             out.println(json);
         } catch (ArithmeticException e) {
             out.println(e.getMessage());
         } catch (NumberFormatException es) {
-            out.println("Verifique que todos los campos hayan sido llenados");
+            out.println("Verifique que todos los campos hayan sido llenados correctamente");
         }
     }
+
 }

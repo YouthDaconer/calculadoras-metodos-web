@@ -40,7 +40,7 @@ public class IntegracionRectangulosServlet extends HttpServlet {
             Integer num_particiones = Integer.parseInt(request.getParameter("particiones"));
 
             if (x1 >= x2 || num_particiones <= 0) {// En caso de algun en el intervalo 0 con el error tolerado
-                out.println("Asegúrate de que el intervalo esté bien ingresado y que las particiones sean > 0");
+                json.put("resultado", "Asegúrate de que el intervalo esté bien ingresado y que las particiones sean > 0");
             } else {
                 integracion = new Integral(expresion, x1, x2, num_particiones);
                 resultado_extr_izquierdo = "" + integracion.rectanguloIzquierdo();//calculamos
@@ -62,8 +62,8 @@ public class IntegracionRectangulosServlet extends HttpServlet {
                 } else { //ponemos los resultados
                     json.put("derecho", resultado_extr_derecho);
                 }
-                out.println(json);
             }
+            out.println(json);
         } catch (ArithmeticException e) {
             out.println(e.getMessage());
         } catch (NumberFormatException es) {

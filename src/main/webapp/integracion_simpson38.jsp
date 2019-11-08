@@ -20,7 +20,6 @@
     </head>
 
     <body>
-
         <!-- Navigation -->
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
@@ -99,58 +98,90 @@
         <div class="container">
 
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3">Derivadas
+            <h1 class="mt-4 mb-3">Integrales  
+                <small>Simpson 3/8</small>
             </h1>
 
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.jsp">Inicio</a>
                 </li>
-                <li class="breadcrumb-item active">Derivadas</li>
+                <li class="breadcrumb-item">Integrales</li>
+                <li class="breadcrumb-item active">Simpson 3/8</li>
             </ol>
             <br/>
-
-            <!-- Intro Content -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <form>
+            <form>
+                <div class="row">
+                    <div class="col-lg-6">
                         <div class="form-group row">
                             <label for="expresionMath" class="col-sm-2 col-form-label">Expresión</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="expresionMath" placeholder="Escriba la expresión matemática">
+                                <input type="text" class="form-control" id="expresionMath" placeholder="Escriba la expresión matemática" required>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                Intervalo
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label for="inferior" class="col-sm-5 col-form-label">Desde (a)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="inferior" placeholder="Desde" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label for="superior" class="col-sm-5 col-form-label">Hasta (b)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="superior" placeholder="Hasta" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="form-group row">
+                            <label for="particiones" class="col-sm-2 col-form-label">Particiones</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="particiones" placeholder="Escriba el número de particiones" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group row">
+                            <label for="resultado" class="col-sm-2 col-form-label">Resultado</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="resultado" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="valorX" class="col-sm-2 col-form-label">Evaluar en x</label>
+                            <label for="error" class="col-sm-2 col-form-label">Error calculado</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="valorX" placeholder="Escriba el valor de x">
-                            </div>
-                        </div>
-                        <hr/>
-                        <div class="form-group row">
-                            <label for="resultado" class="col-sm-2 col-form-label">Primera Derivada F'(x)</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="primera_derivada" readonly>
+                                <input type="text" class="form-control" id="error" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="resultado" class="col-sm-2 col-form-label">Segunda Derivada F"(x)</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="segunda_derivada" readonly>
+                            <div class="col-sm-12">
+                                <div class="float-right">
+                                    <button id="calcular" type="button" class="btn btn-primary">Calcular</button>
+                                </div>
                             </div>
                         </div>
-                        </br>
-                        <div class="form-group row">
-                            <div class="col-sm-10">
-                                <button id="calcular" type="button" class="btn btn-primary">Calcular</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="img-fluid rounded mb-4" id="applet_container"></div>
+                <hr/>
+                <br/>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="img-fluid rounded mb-4" id="applet_container"></div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <br/>
@@ -175,7 +206,7 @@
             if (funcion !== "") {
                 document.ggbApplet.reset();
             }
-            funcion = "f(x)=" + $('#expresionMath').val();
+            funcion = "Integral(" + $('#expresionMath').val() + ", " + $('#inferior').val() + ", " + $('#superior').val() + ")";
             applet.evalCommand(funcion);
         }
 
@@ -207,15 +238,19 @@
             applet.inject('applet_container');
             $('#calcular').click(function (event) {
                 var expresion = $('#expresionMath').val();
-                var valor = $('#valorX').val();
-                $.post('DerivadasServlet', {
-                    expresionMath: expresion,
-                    valorX: valor
+                var inferior = $('#inferior').val();
+                var superior = $('#superior').val();
+                var particiones = $('#particiones').val();
+                $.post('IntegracionSimpson38Servlet', {
+                    expresion: expresion,
+                    inferior: inferior,
+                    superior: superior,
+                    particiones: particiones
                 }, function (jsonData) {
                     var resultados = jQuery.parseJSON(jsonData);
                     setFunction('T');
-                    $('#primera_derivada').val(resultados.primera);
-                    $('#segunda_derivada').val(resultados.segunda);
+                    $('#resultado').val(resultados.resultado);
+                    $('#error').val(resultados.error);
                 });
             });
         });
