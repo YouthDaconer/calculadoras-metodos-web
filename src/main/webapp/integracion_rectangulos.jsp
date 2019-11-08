@@ -128,15 +128,16 @@
         <div class="container">
 
             <!-- Page Heading/Breadcrumbs -->
-            <h1 class="mt-4 mb-3">Newthon Raphson
+            <h1 class="mt-4 mb-3">Integrales  
+                <small>Suma de rectangulos</small>
             </h1>
 
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="index.jsp">Inicio</a>
                 </li>
-                <li class="breadcrumb-item">Raíces</li>
-                <li class="breadcrumb-item active">Newthon Raphson</li>
+                <li class="breadcrumb-item">Integrales</li>
+                <li class="breadcrumb-item active">Suma de rectangulos</li>
             </ol>
             <br/>
             <form>
@@ -145,42 +146,61 @@
                         <div class="form-group row">
                             <label for="expresionMath" class="col-sm-2 col-form-label">Expresión</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="expresionMath" placeholder="Escriba la expresión matemática">
+                                <input type="text" class="form-control" id="expresionMath" placeholder="Escriba la expresión matemática" required>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="valorX" class="col-sm-2 col-form-label">Evaluar en x</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="valorX" placeholder="Escriba el valor de x">
+                        <div class="card">
+                            <div class="card-header">
+                                Intervalo
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label for="inferior" class="col-sm-5 col-form-label">Desde (a)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="inferior" placeholder="Desde" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label for="superior" class="col-sm-5 col-form-label">Hasta (b)</label>
+                                            <div class="col-sm-7">
+                                                <input type="number" class="form-control" id="superior" placeholder="Hasta" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <br/>
                         <div class="form-group row">
-                            <label for="errorTol" class="col-sm-2 col-form-label">Error Tolerancia</label>
+                            <label for="particiones" class="col-sm-2 col-form-label">Particiones</label>
                             <div class="col-sm-10">
-                                <input type="number" class="form-control" id="errorTol" placeholder="Escriba el error de tolerancia">
+                                <input type="number" class="form-control" id="particiones" placeholder="Escriba el número de particiones" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group row">
-                            <label for="resultado" class="col-sm-2 col-form-label">Resultado</label>
+                            <label for="izquierdo" class="col-sm-2 col-form-label">Extremo izquierdo</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="resultado" readonly>
+                                <input type="text" class="form-control" id="izquierdo" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="errorRel" class="col-sm-2 col-form-label">Error Relativo</label>
+                            <label for="medio" class="col-sm-2 col-form-label">Punto medio</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="errorRel" readonly>
+                                <input type="text" class="form-control" id="medio" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="numIteraciones" class="col-sm-2 col-form-label">Iteraciones</label>
+                            <label for="derecho" class="col-sm-2 col-form-label">Extremo derecho</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="numIteraciones" readonly>
+                                <input type="text" class="form-control" id="derecho" readonly>
                             </div>
                         </div>
-                        </br>
                         <div class="form-group row">
                             <div class="col-sm-12">
                                 <div class="float-right">
@@ -188,28 +208,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <table class="table table-striped">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Iteración</th>
-                                    <th scope="col">Xn</th>
-                                    <th scope="col">Imagen Xn</th>
-                                    <th scope="col">Derivada Xn</th>
-                                    <th scope="col">Xn+1</th>
-                                    <th scope="col">Error relativo</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabla_iteraciones">
-                                <tr>
-                                    <td colspan="6"><center>Sin iteraciones</center></td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
                 <hr/>
@@ -240,25 +238,19 @@
             $(document).ready(function () {
                 $('#calcular').click(function (event) {
                     var expresion = $('#expresionMath').val();
-                    var errorTol = $('#errorTol').val();
-                    var valor = $('#valorX').val();
-                    $.post('NewthonRaphsonServlet', {
-                        expresionMath: expresion,
-                        errorTol: errorTol,
-                        valorX: valor
+                    var inferior = $('#inferior').val();
+                    var superior = $('#superior').val();
+                    var particiones = $('#particiones').val();
+                    $.post('IntegracionRectangulosServlet', {
+                        expresion: expresion,
+                        inferior: inferior,
+                        superior: superior,
+                        particiones: particiones
                     }, function (jsonData) {
                         var resultados = jQuery.parseJSON(jsonData);
-                        $("#tabla_iteraciones").html("");
-                        var tabla = "";
-                        console.log(resultados.tabla_iteraciones);
-                        var elementos = JSON.parse(resultados.tabla_iteraciones);
-                        for (var i = 0; i < elementos.length; i++) {
-                            tabla += '<tr><td>' + elementos[i][0] + '</td><td>' + elementos[i][1] + '</td><td>' + elementos[i][2] + '</td><td>' + elementos[i][3] + '</td><td>' + elementos[i][4] + '</td><td>' + elementos[i][5] + '</td></tr>';
-                        }
-                        $("#tabla_iteraciones").html(tabla);
-                        $('#resultado').val(resultados.resultado);
-                        $('#errorRel').val(resultados.error);
-                        $('#numIteraciones').val(resultados.iteraciones);
+                        $('#izquierdo').val(resultados.izquierdo);
+                        $('#medio').val(resultados.medio);
+                        $('#derecho').val(resultados.derecho);
                     });
                 });
             });

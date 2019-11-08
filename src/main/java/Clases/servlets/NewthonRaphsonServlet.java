@@ -6,6 +6,7 @@
 package Clases.servlets;
 
 import Clases.control.NewtonRaphson;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
+import org.json.JSONObject;
 
 @WebServlet("/NewthonRaphsonServlet")
 public class NewthonRaphsonServlet extends HttpServlet {

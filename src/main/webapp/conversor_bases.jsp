@@ -59,7 +59,7 @@
                                 Integrales
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownRaices">
-                                <a class="dropdown-item" href="full-width.jsp">Suma de rectángulos</a>
+                                <a class="dropdown-item" href="integracion_rectangulos.jsp">Suma de rectángulos</a>
                                 <a class="dropdown-item" href="sidebar.jsp">Suma de trapecios</a>
                                 <a class="dropdown-item" href="faq.jsp">Simpson 1/3</a>
                                 <a class="dropdown-item" href="404.jsp">Simpson 3/8</a>
