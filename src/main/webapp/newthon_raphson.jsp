@@ -198,33 +198,16 @@
                                 <tr>
                                     <th scope="col">Iteración</th>
                                     <th scope="col">Xn</th>
+                                    <th scope="col">Imagen Xn</th>
                                     <th scope="col">Derivada Xn</th>
                                     <th scope="col">Xn+1</th>
                                     <th scope="col">Error relativo</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tabla_iteraciones">
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                    <td colspan="6"><center>Sin iteraciones</center></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -265,6 +248,14 @@
                         valorX: valor
                     }, function (jsonData) {
                         var resultados = jQuery.parseJSON(jsonData);
+                        $("#tabla_iteraciones").html("");
+                        var tabla = "";
+                        console.log(resultados.tabla_iteraciones);
+                        var elementos = JSON.parse(resultados.tabla_iteraciones);
+                        for (var i = 0; i < elementos.length; i++) {
+                            tabla += '<tr><td>' + elementos[i][0] + '</td><td>' + elementos[i][1] + '</td><td>' + elementos[i][2] + '</td><td>' + elementos[i][3] + '</td><td>' + elementos[i][4] + '</td><td>' + elementos[i][5] + '</td></tr>';
+                        }
+                        $("#tabla_iteraciones").html(tabla);
                         $('#resultado').val(resultados.resultado);
                         $('#errorRel').val(resultados.error);
                         $('#numIteraciones').val(resultados.iteraciones);

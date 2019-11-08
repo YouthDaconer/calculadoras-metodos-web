@@ -8,7 +8,6 @@ package Clases.servlets;
 import Clases.control.NewtonRaphson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +42,8 @@ public class NewthonRaphsonServlet extends HttpServlet {
                 json.put("resultado", resultado);
                 json.put("error", nr.getError());
                 json.put("iteraciones", nr.getIteraciones());
+                String tabla_iteraciones = new Gson().toJson(nr.getDatos());
+                json.put("tabla_iteraciones", tabla_iteraciones);
                 out.println(json);
             }
         } catch (ArithmeticException e) {
