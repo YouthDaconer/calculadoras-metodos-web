@@ -272,7 +272,48 @@
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script>
+            // Reestinge el input a un  patrón pasado por parámetro
+            (function ($) {
+                $.fn.inputFilter = function (inputFilter) {
+                    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+                        if (inputFilter(this.value)) {
+                            this.oldValue = this.value;
+                            this.oldSelectionStart = this.selectionStart;
+                            this.oldSelectionEnd = this.selectionEnd;
+                        } else if (this.hasOwnProperty("oldValue")) {
+                            this.value = this.oldValue;
+                            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                        }
+                    });
+                };
+            }(jQuery));
+
+
             $(document).ready(function () {
+                $("#numDecimal").inputFilter(function (value) {
+                    return /^-?\d*[.]?\d*$/.test(value);
+                });
+                $("#numBinario").inputFilter(function (value) {
+                    return /^-?(0|1)*[.]?(0|1)*$/.test(value);
+                });
+                $("#signo_32_bits").inputFilter(function (value) {
+                    return /^(0|1){0,1}$/.test(value);
+                });
+                $("#signo_64_bits").inputFilter(function (value) {
+                    return /^(0|1){0,1}$/.test(value);
+                });
+                $("#exponente_32_bits").inputFilter(function (value) {
+                    return /^(0|1){0,8}$/.test(value);
+                });
+                $("#exponente_64_bits").inputFilter(function (value) {
+                    return /^(0|1){0,11}$/.test(value);
+                });
+                $("#mantisa_32_bits").inputFilter(function (value) {
+                    return /^(0|1){0,23}$/.test(value);
+                });
+                $("#mantisa_64_bits").inputFilter(function (value) {
+                    return /^(0|1){0,52}$/.test(value);
+                });
                 $('#numDecimal').focus();
                 $("#base").change(function () {
                     $('#numDecimal').val("");
