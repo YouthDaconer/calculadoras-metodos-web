@@ -166,6 +166,7 @@ public class Decimal {
 //        System.out.println("73BC5f a decimal es: " + num.aDecimal("73BC5f", 16));
 //        System.out.println("73BC5f.3 a decimal es: " + num.aDecimal("73BC5f.3", 16));
 //        System.out.println("-73BC5f a decimal es: " + num.aDecimal("-73BC5f", 16));
-//        System.out.println("-73BC5f.3 a decimal es: " + num.aDecimal("-73BC5f.3", 16));
+//        System.out.println("-73BC5f.3 a decimal es: " + num.aDecimal("-73BC5f.3", 16)); 
+    
 //    }
 }
