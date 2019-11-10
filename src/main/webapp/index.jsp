@@ -75,67 +75,67 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/VKeeT149XRs/maxresdefault.jpg" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/hsSJHAs6bMg/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Conversor de bases númericas</a>
+                                <a href="#">Conversión de base decimal a binario</a>
                             </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+                            <p class="card-text">La calculadora conversora de bases numéricas convierte fácilmente cifras decimales a binarias.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/1ZOUbSeutuI/maxresdefault.jpg" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/1P1nLgBt8ts/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Newthon Raphson</a>
+                                <a href="#">Conversión de base decimal a octal</a>
                             </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                            <p class="card-text">La calculadora conversora de bases numéricas convierte fácilmente cifras decimales a octales.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/i2LVjwAg02k/maxresdefault.jpg" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/R8vsx52ZwmU/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Regla Falsa</a>
+                                <a href="#">Conversión de base decimal a hexadecimal</a>
                             </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+                            <p class="card-text">La calculadora conversora de bases numéricas convierte fácilmente cifras decimales a hexadecimales.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/ir9SJId4jmQ/maxresdefault.jpg" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/wKIrUf5jcDw/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">Bisección</a>
                             </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                            <p class="card-text">El método de bisección es un algoritmo de búsqueda de raíces que trabaja dividiendo el intervalo a la mitad y seleccionando el subintervalo que tiene la raíz.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/XAzetwuano0/maxresdefault.jpg" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/AZmraudqjS0/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Project Five</a>
+                                <a href="#">Integración Simpson 1/3</a>
                             </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+                            <p class="card-text">Este método consiste en la aproximación del cálculo del área plana bajo una curva utilizando trapecios curvilíneos a partir una interpolación con una función cuadrática.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/wTTEM5qJNiA/maxresdefault.jpg" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/9SziaD6foqM/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Project Six</a>
+                                <a href="#">Integración Simpson 3/8</a>
                             </h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+                            <p class="card-text">Determina o aproxima el área bajo una función de tercer grados que conecta 4 puntos sobre una curva dada de una integral definida.</p>
                         </div>
                     </div>
                 </div>
