@@ -57,8 +57,8 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownRaices">
                                 <a class="dropdown-item" href="newthon_raphson.jsp">Newthon Rapshon</a>
-                                <a class="dropdown-item" href="blog-home-2.jsp">Regla Falsa</a>
-                                <a class="dropdown-item" href="blog-post.jsp">Bisección</a>
+                                <a class="dropdown-item" href="regla_falsa.jsp">Regla Falsa</a>
+                                <a class="dropdown-item" href="biseccion.jsp">Bisección</a>
                             </div>
                         </li>
                         <li class="nav-item">
