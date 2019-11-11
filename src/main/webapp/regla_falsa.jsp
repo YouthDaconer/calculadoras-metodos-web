@@ -204,7 +204,7 @@
                 var errorTol = $('#errorTol').val();
                 var inferior = $('#inferior').val();
                 var superior = $('#superior').val();
-                $.post('BiseccionServlet', {
+                $.post('ReglaFalsaServlet', {
                     expresionMath: expresion,
                     errorTol: errorTol,
                     inferior: inferior,
