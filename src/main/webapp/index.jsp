@@ -75,10 +75,10 @@
             <div class="row">
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/hsSJHAs6bMg/maxresdefault.jpg" alt=""></a>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=hsSJHAs6bMg&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=7"><img class="card-img-top" src="http://i3.ytimg.com/vi/hsSJHAs6bMg/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Conversión de base decimal a binario</a>
+                                <a target="_blank" href="https://www.youtube.com/watch?v=hsSJHAs6bMg&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=7">Conversión de base decimal a binario</a>
                             </h4>
                             <p class="card-text">La calculadora conversora de bases numéricas convierte fácilmente cifras decimales a binarias.</p>
                         </div>
@@ -86,10 +86,10 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/1P1nLgBt8ts/maxresdefault.jpg" alt=""></a>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=1P1nLgBt8ts&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=5"><img class="card-img-top" src="http://i3.ytimg.com/vi/1P1nLgBt8ts/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Conversión de base decimal a octal</a>
+                                <a target="_blank" href="https://www.youtube.com/watch?v=1P1nLgBt8ts&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=5">Conversión de base decimal a octal</a>
                             </h4>
                             <p class="card-text">La calculadora conversora de bases numéricas convierte fácilmente cifras decimales a octales.</p>
                         </div>
@@ -97,10 +97,10 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/R8vsx52ZwmU/maxresdefault.jpg" alt=""></a>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=R8vsx52ZwmU&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=6"><img class="card-img-top" src="http://i3.ytimg.com/vi/R8vsx52ZwmU/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Conversión de base decimal a hexadecimal</a>
+                                <a target="_blank" href="https://www.youtube.com/watch?v=R8vsx52ZwmU&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=6">Conversión de base decimal a hexadecimal</a>
                             </h4>
                             <p class="card-text">La calculadora conversora de bases numéricas convierte fácilmente cifras decimales a hexadecimales.</p>
                         </div>
@@ -108,10 +108,10 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/wKIrUf5jcDw/maxresdefault.jpg" alt=""></a>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=wKIrUf5jcDw&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=4"><img class="card-img-top" src="http://i3.ytimg.com/vi/wKIrUf5jcDw/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Bisección</a>
+                                <a target="_blank" href="https://www.youtube.com/watch?v=wKIrUf5jcDw&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=4">Bisección</a>
                             </h4>
                             <p class="card-text">El método de bisección es un algoritmo de búsqueda de raíces que trabaja dividiendo el intervalo a la mitad y seleccionando el subintervalo que tiene la raíz.</p>
                         </div>
@@ -119,10 +119,21 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/AZmraudqjS0/maxresdefault.jpg" alt=""></a>
+                        <a target="_blank"href="https://www.youtube.com/watch?v=qa72j8OyOZE&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=2&t=0s"><img class="card-img-top" src="http://i3.ytimg.com/vi/qa72j8OyOZE/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Integración Simpson 1/3</a>
+                                <a target="_blank" href="https://www.youtube.com/watch?v=qa72j8OyOZE&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=2&t=0s">Regla del Trapecio</a>
+                            </h4>
+                            <p class="card-text">La regla del trapecio consiste utilizar trapecios en lugar de rectángulos al hacer la aproximación del área bajo la curva.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <a target="_blank" href="https://www.youtube.com/watch?v=AZmraudqjS0&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=3"><img class="card-img-top" src="http://i3.ytimg.com/vi/AZmraudqjS0/maxresdefault.jpg" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a target="_blank" href="https://www.youtube.com/watch?v=AZmraudqjS0&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=3">Integración Simpson 1/3</a>
                             </h4>
                             <p class="card-text">Este método consiste en la aproximación del cálculo del área plana bajo una curva utilizando trapecios curvilíneos a partir una interpolación con una función cuadrática.</p>
                         </div>
@@ -130,10 +141,10 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://i3.ytimg.com/vi/9SziaD6foqM/maxresdefault.jpg" alt=""></a>
+                        <a target="_blank" href="https://www.youtube.com/watch?v=9SziaD6foqM&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=2"><img class="card-img-top" src="http://i3.ytimg.com/vi/9SziaD6foqM/maxresdefault.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Integración Simpson 3/8</a>
+                                <a target="_blank" href="https://www.youtube.com/watch?v=9SziaD6foqM&list=PLexjgaRbk4U9bCQCsrJCb52o16Vj-iI4b&index=2">Integración Simpson 3/8</a>
                             </h4>
                             <p class="card-text">Determina o aproxima el área bajo una función de tercer grados que conecta 4 puntos sobre una curva dada de una integral definida.</p>
                         </div>
