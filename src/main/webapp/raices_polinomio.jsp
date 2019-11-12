@@ -52,9 +52,12 @@
                         </div>                        
                         <hr/>
                         <div class="form-group row">
-                            <label for="resultado" class="col-sm-2 col-form-label">Raices</label>
+                            <div class="col-sm-2">
+                                <br/>
+                                <label for="resultado" class="col-form-label">Raíces</label>
+                            </div>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="resultado" readonly>
+                                <textarea class="form-control" id="resultado" rows="10" readonly></textarea>
                             </div>
                         </div>
                         </br>
@@ -91,7 +94,7 @@
                 if (funcion !== "") {
                     document.ggbApplet.reset();
                 }
-                funcion = "f(x)=" + $('#expresionMath').val();
+                funcion = "Polynomial(" + $('#expresionMath').val() + ")";
                 applet.evalCommand(funcion);
             }
 
@@ -125,12 +128,12 @@
                 $('#calcular').click(function (event) {
                     var expresion = $('#expresionMath').val();
                     $.post('PolinomiosServlet', {
-                        expresionMath: expresion                        
+                        expresionMath: expresion
                     }, function (responseText) {
                         setFunction('T');
                         $('#resultado').val(responseText);
                     });
-                    
+
                 });
             });
         </script>

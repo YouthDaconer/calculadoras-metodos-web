@@ -44,7 +44,7 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="raices_polinomio.jsp">Raíces de polinomios</a>
+            <a class="nav-link" href="raices_polinomio.jsp">Polinomios</a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMatrices" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
