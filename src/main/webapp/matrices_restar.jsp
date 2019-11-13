@@ -170,8 +170,8 @@
                     function Mostrar() {
                         Cargar();
                         var q = 0;
-                        for (i = 0; i < matrizRes.length; i++) {
-                            for (j = 0; j < matrizRes.length; j++) {
+                        for (i = 0; i < filaA; i++) {
+                            for (j = 0; j < colA; j++) {
                                 document.matrizR.elements[q].value = matrizRes[i][j];
                                 matrizRes[i][j] = 0;
                                 q++;
