@@ -184,14 +184,14 @@
                         var q = 0;
                         for (i = 0; i < filaA; i++) {
                             for (j = 0; j < colA; j++) {
-                                matriz1[i][j] = parseInt(document.matrizA.elements[q].value);
+                                matriz1[i][j] = parseFloat(document.matrizA.elements[q].value);
                                 q++;
                             }
                         }
                         q = 0;
                         for (i = 0; i < filaB; i++) {
                             for (j = 0; j < colB; j++) {
-                                matriz2[i][j] = parseInt(document.matrizB.elements[q].value);
+                                matriz2[i][j] = parseFloat(document.matrizB.elements[q].value);
                                 q++;
                             }
                         }
@@ -206,8 +206,8 @@
                         colB = parseInt(document.dimB.elements[1].value);
                         if (isNaN(filaA) || isNaN(colA) || isNaN(filaB) || isNaN(colB)) {
                             alert("Valores no v\u00e1lidos.");
-                        } else if (colA != filaB) {
-                            alert("Dimensiones de las matrices no v\u00e1lidas.\nEl n\u00famero de columnas de A debe ser\nigual al n\u00famero de filas de B.");
+                        } else if (colA != colB || filaA != filaB) {
+                            alert("Dimensiones de las matrices no v\u00e1lidas.\nEl n\u00famero de columnas y filas de A debe ser\nigual al de B.");
                         } else {
                             if (contador > 0) {
                                 Borrar();
@@ -334,7 +334,7 @@
                     function Inicializar() {
                         for (i = 0; i < matrizRes.length; i++) {
                             for (j = 0; j < matrizRes.length; j++) {
-                                matrizRes[i][j] = 0;
+                                matrizRes[i][j] = 0.0;
                             }
                         }
                     }

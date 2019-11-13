@@ -172,8 +172,8 @@
                     function Mostrar() {
                         Cargar();
                         var q = 0;
-                        for (i = 0; i < matrizRes.length; i++) {
-                            for (j = 0; j < matrizRes.length; j++) {
+                        for (i = 0; i < filaA; i++) {
+                            for (j = 0; j < colB; j++) {
                                 document.matrizR.elements[q].value = matrizRes[i][j];
                                 matrizRes[i][j] = 0;
                                 q++;
@@ -186,14 +186,14 @@
                         var q = 0;
                         for (i = 0; i < filaA; i++) {
                             for (j = 0; j < colA; j++) {
-                                matriz1[i][j] = parseInt(document.matrizA.elements[q].value);
+                                matriz1[i][j] = parseFloat(document.matrizA.elements[q].value);
                                 q++;
                             }
                         }
                         q = 0;
                         for (i = 0; i < filaB; i++) {
                             for (j = 0; j < colB; j++) {
-                                matriz2[i][j] = parseInt(document.matrizB.elements[q].value);
+                                matriz2[i][j] = parseFloat(document.matrizB.elements[q].value);
                                 q++;
                             }
                         }
