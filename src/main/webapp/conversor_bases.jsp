@@ -134,7 +134,7 @@
                     return /^-?([0-7])*[.]?([0-7])*$/.test(value);
                 });
                 $("#numHexadecimal").inputFilter(function (value) {
-                    return /^-?([a-f\d])*[.]?([a-f\d])*$/i.test(value)
+                    return /^-?([a-f\d])*[.]?([a-f\d])*$/i.test(value);
                 });
                 $('#numDecimal').focus();
                 $("#base").change(function () {
