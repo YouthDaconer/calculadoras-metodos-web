@@ -30,7 +30,7 @@
 
             <!-- Page Heading/Breadcrumbs -->
             <h1 class="mt-4 mb-3">Matrices
-                <small>Resta de Matrices</small>
+                <small>Gauss Jordan</small>
             </h1>
 
             <ol class="breadcrumb">
@@ -38,7 +38,7 @@
                     <a href="index.jsp">Inicio</a>
                 </li>
                 <li class="breadcrumb-item">Matrices</li>
-                <li class="breadcrumb-item active">Resta de Matrices</li>
+                <li class="breadcrumb-item active">Gauss Jordan</li>
             </ol>
             <br/>
 
@@ -52,48 +52,20 @@
                         <div class="card-body">
                             <form name="dimA">
                                 <div class="form-group row">
-                                    <label for="text" class="col-sm-3 col-form-label">Filas</label>
+                                    <label for="text" class="col-sm-3 col-form-label">Número de incógnitas</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control parametros" placeholder="Escriba el número de filas" id="text">
+                                        <input type="text" class="form-control parametros" placeholder="Escriba el número de incógnitas" id="text">
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="text" class="col-sm-3 col-form-label">Columnas</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control parametros" placeholder="Escriba el número de columnas" id="text">
-                                    </div>
-                                </div>
+                                </div>                                
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            Parametros Matriz B
-                        </div>
-                        <div class="card-body">
-                            <form name="dimB">
-                                <div class="form-group row">
-                                    <label for="text" class="col-sm-3 col-form-label">Filas</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control parametros" placeholder="Escriba el número de filas" id="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="text" class="col-sm-3 col-form-label">Columnas</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control parametros" placeholder="Escriba el número de columnas" id="text">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <br/>
             <div class="d-flex justify-content-center">
-                <button id="crear" type="button" class="btn btn-primary" onclick="Comprobar()">Crear Matrices</button>
+                <button id="crear" type="button" class="btn btn-primary" onclick="Comprobar()">Crear Matriz</button>
             </div>
             <hr/>
             <div class="row">
@@ -115,13 +87,10 @@
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script>
-                    var matriz1;
-                    var matriz2;
+                    var matriz;
+                    var soluciones;
                     var matrizRes;
-                    var filaA;
-                    var colA;
-                    var filaB;
-                    var colB;
+                    var tam;
                     var contador = 0;
 
                     // Reestinge el input a un  patrón pasado por parámetro
@@ -158,23 +127,19 @@
                         return this;
                     }
 
-                    function Restar() {
-                        Inicializar();
-                        for (x = 0; x < matriz1.length; x++) {
-                            for (y = 0; y < matriz1[x].length; y++) {
-                                matrizRes[x][y] = matriz1[x][y] - matriz2[x][y];
-                            }
-                        }
-                    }
-
                     function Mostrar() {
                         Cargar();
                         var q = 0;
-                        for (i = 0; i < filaA; i++) {
-                            for (j = 0; j < colA; j++) {
-                                document.matrizR.elements[q].value = matrizRes[i][j];
-                                matrizRes[i][j] = 0;
+                        for (i = 0; i < tam; i++) {
+                            for (j = 0; j < tam; j++) {
+                                document.matrizR.elements[q].value = matriz[i][j];
+                                matriz[i][j] = 0;
                                 q++;
+                                if(tam-j==1){
+                                    document.matrizR.elements[q].value=soluciones[i];
+                                    soluciones[i]=0;
+                                    q++;
+                                }
                             }
                         }
                     }
@@ -182,56 +147,135 @@
                     //Esta función recoge los datos del formulario y los guarda en las matrices
                     function Cargar() {
                         var q = 0;
-                        for (i = 0; i < filaA; i++) {
-                            for (j = 0; j < colA; j++) {
-                                matriz1[i][j] = parseFloat(document.matrizA.elements[q].value);
+                        for (i = 0; i < tam; i++) {
+                            for (j = 0; j < tam; j++) {
+                                matriz[i][j] = parseFloat(document.matrizA.elements[q].value);                                
                                 q++;
+                                if(tam-j==1){
+                                    soluciones[i]=parseFloat(document.matrizA.elements[q].value);
+                                    q++;
+                                }
                             }
-                        }
-                        q = 0;
-                        for (i = 0; i < filaB; i++) {
-                            for (j = 0; j < colB; j++) {
-                                matriz2[i][j] = parseFloat(document.matrizB.elements[q].value);
-                                q++;
-                            }
-                        }
-                        Restar();
+                        }                        
+                        
+                        metodoGaussJordan();
                     }
+                    
+                    function metodoGaussJordan() {                       
+                        if (arreglarMatriz()) {
+                            var n = tam;
+                            var p, c;                            
+
+                            for (var i = 0; i < n; i++) {
+                                c = 0.0;
+                                //Elementos pertenecientes a la diagonal (transformarlos en 1)
+                                p = matriz[i][i];// seleccionamos el pivote
+                                
+                                for (var j = 0; j < n; j++) {
+                                    matriz[i][j] = matriz[i][j] / p; // operamos la fila                                    
+                                }
+                                soluciones[i] = soluciones[i] / p; // operamos la solución de la fila
+
+                                
+
+                                //Elementos no pertenecientes a la diagonal (transformarlos en 0)
+                                for (var x = 0; x < n; x++) {
+                                    if (i != x) {
+                                        c = matriz[x][i];
+                                        
+                                        for (var y = 0; y < n; y++) {
+                                            matriz[x][y] = matriz[x][y] - c * matriz[i][y];//operamos la fila                                            
+                                        }
+                                        soluciones[x] = soluciones[x] - c * soluciones[i]; // operamos la solución de la fila
+                                    }
+                                }
+                                if (ceroEnDiagonal() != -1) {
+                                    alert(getMensajeGauss(ceroEnDiagonal()));
+                                }
+                            }                            
+                        } else {
+                           alert("Verifica que la matriz esté escrita correctamente :(");
+                        }
+
+                    }
+                    //Mensaje de error
+                    function getMensajeGauss(i) {
+                        if (soluciones[i] == 0) {
+                            return "El sistema tiene infinitas soluciones";
+                        } else {
+                            return "El sistema no tiene solución :(";
+                        }
+                    }
+                    //-----------------------------------------
+                    
+                    //cambia la fila de la matriz por otra
+                    function cambiarFila(index1, index2) {
+                        var n = tam;
+                        var temp = new Array(n);
+                        var t = soluciones[index1];
+                        soluciones[index1]=soluciones[index2];
+                        soluciones[index2] = t;
+                        for (var i = 0; i < n; i++) {
+                            temp[i] =matriz[index1][i];
+                            matriz[index1][i]=matriz[index2][i];
+                            matriz[index2][i]=temp[i];
+                        }
+                    }
+                    //----------------------------------
+
+                    //retorna el indice de la diagonal con 0
+                    function ceroEnDiagonal() {
+                        var i;
+                        for (i = 0; i < tam; i++) {
+                            if (matriz[i][i] == 0) {
+                                return i;
+                            }
+                        }
+                        return - 1;
+                    }
+                    //----------------------------------------
+
+                    //Acomoda la matrir y retorna true si logró acomodarla
+                    function arreglarMatriz() {
+                        var n = tam;
+                        var i = 0;
+                        while (ceroEnDiagonal() != - 1 && i < n - 1) {
+                            cambiarFila(i, i + 1);
+                            i++;
+                        }
+                        return ceroEnDiagonal() == - 1; //si existe un cero en la diagonal no está acomodada
+                    }
+                    //------------------------------
 
                     // Comprueba que las dimensiones de las matrices son correctas para poder sumarlas
                     function Comprobar() {
-                        filaA = parseInt(document.dimA.elements[0].value);
-                        colA = parseInt(document.dimA.elements[1].value);
-                        filaB = parseInt(document.dimB.elements[0].value);
-                        colB = parseInt(document.dimB.elements[1].value);
-                        if (isNaN(filaA) || isNaN(colA) || isNaN(filaB) || isNaN(colB)) {
-                            alert("Valores no v\u00e1lidos.");
-                        } else if (colA != colB || filaA != filaB) {
-                            alert("Dimensiones de las matrices no v\u00e1lidas.\nEl n\u00famero de columnas y filas de A debe ser\nigual al de B.");
+                        tam = parseInt(document.dimA.elements[0].value);
+                        
+                        if (isNaN(tam)) {
+                            alert("Valor no v\u00e1lido.");
+                        } else if (tam<2) {
+                            alert("Dimensiones de la matriz no v\u00e1lida.\nEl n\u00famero de incógnitas de la matriz debe ser\nmayor a 1.");
                         } else {
                             if (contador > 0) {
                                 Borrar();
                             }
-                            matriz1 = new CreaMatriz(filaA, colA);
-                            matriz2 = new CreaMatriz(filaB, colB);
-                            CrearFormularios(filaA, colA, filaB, colB);
-                            matrizRes = new CreaMatriz(filaA, colB);
-                            CrearFormRes(filaA, colB);
+                            matriz = new CreaMatriz(tam, tam);
+                            soluciones = new Array(tam);
+                            CrearFormularios(tam);
+                            matrizRes = new CreaMatriz(tam, tam);
+                            CrearFormRes(tam);
                             contador++;
                         }
                     }
 
-                    function CrearFormularios(filA, colA, filB, colB) {
+                    function CrearFormularios(tam) {
                         var d = document.createElement("DIV");
-                        var fA = document.createElement("FORM");
-                        var fB = document.createElement("FORM");
-                        var A = document.createTextNode("Matriz A");
-                        var B = document.createTextNode("Matriz B");
+                        var fA = document.createElement("FORM");                        
+                        var A = document.createTextNode("Matriz");                        
                         d.setAttribute("id", "matrices");
                         d.setAttribute("align", "center");
                         d.setAttribute("style", "width: 50%; height: 100%; float: left; background-color: 66FF66");
-                        fA.setAttribute("name", "matrizA");
-                        fB.setAttribute("name", "matrizB");
+                        fA.setAttribute("name", "matrizA");                        
 
                         var boton = document.createElement("INPUT");
                         boton.setAttribute("type", "button");
@@ -242,39 +286,26 @@
                             Mostrar();
                         };
                         var input_id = "";
-                        for (i = 0; i < filA; i++) {
+                        for (i = 0; i < tam; i++) {
                             var salto = document.createElement("BR");
-                            for (j = 0; j < colA; j++) {
+                            for (j = 0; j < tam+1; j++) {
                                 var casilla = document.createElement("INPUT");
                                 casilla.setAttribute("type", "text");
                                 casilla.setAttribute("size", "4");
                                 casilla.setAttribute("name", "text");
-                                input_id = "mA-" + i + "-" + j;
+                                input_id = "m-" + i + "-" + j;
                                 casilla.setAttribute("id", input_id);
                                 fA.appendChild(casilla);
                             }
                             fA.appendChild(salto);
                         }
-                        for (i = 0; i < filB; i++) {
-                            var salto = document.createElement("BR");
-                            for (j = 0; j < colB; j++) {
-                                var casilla = document.createElement("INPUT");
-                                casilla.setAttribute("type", "text");
-                                casilla.setAttribute("size", "4");
-                                casilla.setAttribute("name", "text");
-                                input_id = "mB-" + i + "-" + j;
-                                casilla.setAttribute("id", input_id);
-                                fB.appendChild(casilla);
-                            }
-                            fB.appendChild(salto);
-                        }
+                        
                         var salto = document.createElement("BR");
                         d.appendChild(salto);
                         d.appendChild(A);
                         d.appendChild(fA);
                         d.appendChild(salto);
-                        d.appendChild(B);
-                        d.appendChild(fB);
+                        
                         var salto = document.createElement("BR");
                         d.appendChild(salto);
                         d.appendChild(boton);
@@ -282,25 +313,17 @@
                         var otro = document.getElementById("main");
                         otro.appendChild(d);
                         // Se enmascaran los inputs de las matrices
-                        for (i = 0; i < filB; i++) {
-                            for (j = 0; j < colB; j++) {
-                                input_id = "mA-" + i + "-" + j;
+                        for (i = 0; i < tam; i++) {
+                            for (j = 0; j <tam+1; j++) {
+                                input_id = "m-" + i + "-" + j;
                                 $("#" + input_id).inputFilter(function (value) {
                                     return /^-?\d*[.]?\d*$/.test(value);
                                 });
                             }
-                        }
-                        for (i = 0; i < filB; i++) {
-                            for (j = 0; j < colB; j++) {
-                                input_id = "mB-" + i + "-" + j;
-                                $("#" + input_id).inputFilter(function (value) {
-                                    return /^-?\d*[.]?\d*$/.test(value);
-                                });
-                            }
-                        }
+                        }                        
                     }
 
-                    function CrearFormRes(filaA, colB) {
+                    function CrearFormRes(tam) {
                         var capa = document.createElement("DIV");
                         var fRes = document.createElement("FORM");
                         var res = document.createTextNode("Matriz Resultante");
@@ -309,9 +332,9 @@
                         capa.setAttribute("style", "width: 50%; height: 100%; float:right; background-color: 20B2AA");
                         fRes.setAttribute("name", "matrizR");
 
-                        for (i = 0; i < filaA; i++) {
+                        for (i = 0; i < tam; i++) {
                             var salto = document.createElement("BR");
-                            for (j = 0; j < colB; j++) {
+                            for (j = 0; j < tam+1; j++) {
                                 var casilla = document.createElement("INPUT");
                                 casilla.setAttribute("type", "text");
                                 casilla.setAttribute("size", "4");

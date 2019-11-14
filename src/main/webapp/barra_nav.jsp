@@ -57,7 +57,7 @@
                 <a class="dropdown-item" href="404.jsp">Producto escalar</a>
                 <a class="dropdown-item" href="pricing.jsp">Transpuesta</a>
                 <a class="dropdown-item" href="pricing.jsp">Inversa</a>
-                <a class="dropdown-item" href="pricing.jsp">Gauss Jordan</a>
+                <a class="dropdown-item" href="matrices_gauss_jordan.jsp">Gauss Jordan</a>
             </div>
         </li>
         <li class="nav-item">

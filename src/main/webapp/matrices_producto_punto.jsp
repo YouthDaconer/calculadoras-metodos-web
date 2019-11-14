@@ -335,7 +335,7 @@
 
                     function Inicializar() {
                         for (i = 0; i < matrizRes.length; i++) {
-                            for (j = 0; j < matrizRes.length; j++) {
+                            for (j = 0; j < matrizRes[0].length; j++) {
                                 matrizRes[i][j] = 0;
                             }
                         }
