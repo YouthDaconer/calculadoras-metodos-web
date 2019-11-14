@@ -284,8 +284,8 @@
                         var otro = document.getElementById("main");
                         otro.appendChild(d);
                         // Se enmascaran los inputs de las matrices
-                        for (i = 0; i < filB; i++) {
-                            for (j = 0; j < colB; j++) {
+                        for (i = 0; i < filA; i++) {
+                            for (j = 0; j < colA; j++) {
                                 input_id = "mA-" + i + "-" + j;
                                 $("#" + input_id).inputFilter(function (value) {
                                     return /^-?\d*[.]?\d*$/.test(value);
