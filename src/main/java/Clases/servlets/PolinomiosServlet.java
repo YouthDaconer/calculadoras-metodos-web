@@ -38,9 +38,8 @@ public class PolinomiosServlet extends HttpServlet {
             String resultado = "NaN";
             try {                                
                 Polinomio p = new Polinomio(expresion);
-                resultado = p.getRaices() + p.getRaicesComplejas();                
-                // Retorna
-                out.println(resultado);
+                resultado = p.getRaices() + p.getRaicesComplejas();                               
+                
             } catch (Exception ex) {                
                 Logger.getLogger("Error en la operación");
             }
