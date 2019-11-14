@@ -54,9 +54,9 @@
                 <a class="dropdown-item" href="matrices_sumar.jsp">Suma</a>
                 <a class="dropdown-item" href="matrices_restar.jsp">Resta</a>
                 <a class="dropdown-item" href="matrices_producto_punto.jsp">Producto punto</a>
-                <a class="dropdown-item" href="404.jsp">Producto escalar</a>
+                <a class="dropdown-item" href="matrices_producto_escalar.jsp">Producto escalar</a>
                 <a class="dropdown-item" href="pricing.jsp">Transpuesta</a>
-                <a class="dropdown-item" href="matruces_inversa.jsp">Inversa</a>
+                <a class="dropdown-item" href="matrices_inversa.jsp">Inversa</a>
                 <a class="dropdown-item" href="matrices_gauss_jordan.jsp">Gauss Jordan</a>
             </div>
         </li>
